@@ -37,8 +37,28 @@ namespace VstNetAudioPlugin.Dsp
             VstParameterCategory paramCategory =
                 parameters.GetParameterCategory(ParameterCategoryName);
 
-            // delay time parameter
+            // dry Level parameter
             var paramInfo = new VstParameterInfo
+            {
+                Category = paramCategory,
+                CanBeAutomated = true,
+                Name = "Index",
+                Label = "Index",
+                ShortLabel = "Db",
+                LargeStepFloat = 0.1f,
+                SmallStepFloat = 0.01f,
+                StepFloat = 0.05f,
+                DefaultValue = 0.8f
+            };
+            DryLevelMgr = paramInfo
+                .Normalize()
+                .ToManager();
+
+            parameterInfos.Add(paramInfo);
+
+            /*
+            // delay time parameter
+            paramInfo = new VstParameterInfo
             {
                 Category = paramCategory,
                 CanBeAutomated = true,
@@ -76,25 +96,6 @@ namespace VstNetAudioPlugin.Dsp
 
             parameterInfos.Add(paramInfo);
 
-            // dry Level parameter
-            paramInfo = new VstParameterInfo
-            {
-                Category = paramCategory,
-                CanBeAutomated = true,
-                Name = "Index",
-                Label = "Index",
-                ShortLabel = "Db",
-                LargeStepFloat = 0.1f,
-                SmallStepFloat = 0.01f,
-                StepFloat = 0.05f,
-                DefaultValue = 0.8f
-            };
-            DryLevelMgr = paramInfo
-                .Normalize()
-                .ToManager();
-
-            parameterInfos.Add(paramInfo);
-
             // wet Level parameter
             paramInfo = new VstParameterInfo
             {
@@ -113,6 +114,7 @@ namespace VstNetAudioPlugin.Dsp
                 .ToManager();
 
             parameterInfos.Add(paramInfo);
+            */
         }
     }
 }

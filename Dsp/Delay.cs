@@ -99,7 +99,7 @@ namespace VstNetAudioPlugin.Dsp
 
         public string GetIndex()
         {
-            return ((int)(_parameters.DryLevelMgr.CurrentValue * 10)).ToString();
+            return ((int)(_parameters.DryLevelMgr.CurrentValue * 100)).ToString();
         }
     }
 }
